@@ -1,0 +1,26 @@
+image: atlassian/default-image:2
+
+definitions:
+  steps:
+    - step: &build
+        name: Rocket Admin Assets Build
+        image: ruby:2.6.5
+        deployment: test
+        caches:
+          - bundler
+        script:
+          - gem install bundler -v 2.1.4
+          - bundle config set path 'vendor/bundle'
+          - gem install gemfury
+          - bundle install
+          - curl -O -u andres_blackrocket:$BITBUCKET_PW https://bitbucket.org/blackrocketco/secrets/raw/master/fury/credentials
+          - fury login < credentials
+          - bundle exec rake build
+          - bundle exec rake deploy_gemfury
+  caches:
+    bundler: vendor/bundle
+    yarncustom: ./node_modules
+    yarn: /usr/local/share/.cache/yarn
+pipelines:
+  default:
+    - step: *build
