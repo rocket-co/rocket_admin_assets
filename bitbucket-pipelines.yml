@@ -16,7 +16,7 @@ definitions:
           - curl -O -u andres_blackrocket:$BITBUCKET_PW https://bitbucket.org/blackrocketco/secrets/raw/master/fury/credentials
           - fury login < credentials
           - bundle exec rake build
-          - bundle exec rake deploy_gemfury
+          - bundle exec rake deploy_gemfury_rocket_admin_assets
   caches:
     bundler: vendor/bundle
     yarncustom: ./node_modules
