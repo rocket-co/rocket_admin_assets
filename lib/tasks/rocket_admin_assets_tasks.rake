@@ -4,18 +4,17 @@
 # end
 
 
-
 require 'rocket_admin_assets/version'
 
-desc "Pushing rocket_admin_assets-#{RocketAdmin::VERSION}.gem to gemfury"
+desc "Pushing rocket_admin_assets-#{RocketAdminAssets::VERSION}.gem to gemfury"
 task :deploy_gemfury_rocket_admin_assets do
-  package = "pkg/rocket_admin_assets-#{RocketAdmin::VERSION}.gem"
+  package = "pkg/rocket_admin_assets-#{RocketAdminAssets::VERSION}.gem"
   ::Git_branch = `git rev-parse --abbrev-ref HEAD`.freeze
   ::FURY_CMD = "fury push #{package} --as rocket-co"
   ::ERROR_PACKAGE_NOT_FOUND = "Error: gem #{package} is not found"
-  ::ERROR_PACKAGE_VERSION_IN_BRANCH = "Error: gem #{package} cant be uploaded with #{RocketAdmin::VERSION} on #{Git_branch}"
+  ::ERROR_PACKAGE_VERSION_IN_BRANCH = "Error: gem #{package} cant be uploaded with #{RocketAdminAssets::VERSION} on #{Git_branch}"
   if File.exist? package
-    if true || RocketAdmin.valid_for_master? && Git_branch.include?('master')
+    if true || RocketAdminAssets.valid_for_master? && Git_branch.include?('master')
       system FURY_CMD
     elsif !Rocket.valid_for_master? && !Git_branch.include?('master')
       system FURY_CMD

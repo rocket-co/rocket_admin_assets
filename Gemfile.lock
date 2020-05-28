@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rocket_admin_assets (0.1.0)
+    rocket_admin_assets (0.1.1)
       autoprefixer-rails (>= 9.1.0)
       rails (~> 6.0.3, >= 6.0.3.1)
       sass

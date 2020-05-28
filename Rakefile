@@ -14,6 +14,11 @@ RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
+#load 'rails/tasks/engine.rake'
+
+load 'lib/tasks/rocket_admin_assets_tasks.rake'
+
 load 'rails/tasks/statistics.rake'
 
 require 'bundler/gem_tasks'
+
