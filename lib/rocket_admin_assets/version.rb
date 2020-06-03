@@ -10,7 +10,7 @@
 # more examples in => https://github.com/RiotGamesMinions/thor-scmversion
 # validated against https://regexr.com/39s32
 module RocketAdminAssets
-  VERSION = '0.1.1'
+  VERSION = '0.1.2'
   def self.valid_for_master?
     VERSION.match?(/^(([0-9]+)\.([0-9]+)\.([0-9]+)?)$/)
   end
